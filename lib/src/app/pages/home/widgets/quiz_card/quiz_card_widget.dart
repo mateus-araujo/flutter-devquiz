@@ -1,6 +1,6 @@
-import 'package:devquiz/src/app/theme/colors.dart';
-import 'package:devquiz/src/app/theme/text_styles.dart';
-import 'package:devquiz/src/app/utils/app_images.dart';
+import 'package:devquiz/src/app/shared/styles/styles.dart';
+import 'package:devquiz/src/app/shared/utils/app_images.dart';
+import 'package:devquiz/src/app/shared/widgets/progress_indicator/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 class QuizCardWidget extends StatelessWidget {
@@ -39,15 +39,10 @@ class QuizCardWidget extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 2,
-                child: LinearProgressIndicator(
-                  value: 0.3,
-                  backgroundColor: AppColors.chartSecondary,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    AppColors.chartPrimary,
-                  ),
-                ),
-              )
+                  flex: 2,
+                  child: ProgressIndicatorWidget(
+                    value: 0.3,
+                  ))
             ],
           )
         ],
