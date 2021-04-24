@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/shared/styles/styles.dart';
 import 'package:devquiz/src/app/shared/utils/app_images.dart';
-import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
   @override

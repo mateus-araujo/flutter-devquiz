@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/pages/home/widgets/app_bar/app_bar_widget.dart';
 import 'package:devquiz/src/app/pages/home/widgets/level_button/level_button_widget.dart';
 import 'package:devquiz/src/app/pages/home/widgets/quiz_card/quiz_card_widget.dart';
-import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
   @override

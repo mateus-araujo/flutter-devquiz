@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/shared/styles/styles.dart';
 import 'package:devquiz/src/app/shared/widgets/progress_indicator/progress_indicator_widget.dart';
-import 'package:flutter/material.dart';
 
 class QuestionIndicatorWidget extends StatelessWidget {
   @override

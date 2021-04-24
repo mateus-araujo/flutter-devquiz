@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/shared/styles/styles.dart';
 import 'package:devquiz/src/app/shared/utils/app_images.dart';
 import 'package:devquiz/src/app/shared/widgets/progress_indicator/progress_indicator_widget.dart';
-import 'package:flutter/material.dart';
 
 class QuizCardWidget extends StatelessWidget {
   @override

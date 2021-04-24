@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/pages/challenge/widgets/answer/answer_widget.dart';
 import 'package:devquiz/src/app/shared/styles/styles.dart';
-import 'package:flutter/material.dart';
 
 class QuizWidget extends StatelessWidget {
   final String title;

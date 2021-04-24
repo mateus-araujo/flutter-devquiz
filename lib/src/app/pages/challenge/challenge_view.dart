@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/pages/challenge/widgets/question_indicator/question_indicator_widget.dart';
 import 'package:devquiz/src/app/pages/challenge/widgets/quiz/quiz_widget.dart';
-import 'package:flutter/material.dart';
 
 class ChallengeView extends StatefulWidget {
   @override

@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/src/app/pages/home/widgets/chart/chart_widget.dart';
 import 'package:devquiz/src/app/shared/styles/styles.dart';
-import 'package:flutter/material.dart';
 
 class ScoreCardWidget extends StatelessWidget {
   @override
