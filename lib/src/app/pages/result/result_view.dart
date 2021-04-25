@@ -1,11 +1,10 @@
+import 'package:devquiz/src/app/shared/widgets/next_button/next_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'package:devquiz/src/app/shared/styles/text_styles.dart';
 import 'package:devquiz/src/app/shared/utils/app_images.dart';
 import 'package:devquiz/src/domain/entities/quiz_model.dart';
-
-import '../challenge/widgets/next_button/next_button_widget.dart';
 
 class ResultView extends StatelessWidget {
   final QuizModel quiz;

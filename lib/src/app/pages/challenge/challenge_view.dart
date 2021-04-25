@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:devquiz/src/app/pages/result/result_view.dart';
+import 'package:devquiz/src/app/shared/widgets/next_button/next_button_widget.dart';
 import 'package:devquiz/src/domain/entities/quiz_model.dart';
 
 import '../../navigation/routes.dart';
 import 'controllers/challenge_controller.dart';
-import 'widgets/next_button/next_button_widget.dart';
 import 'widgets/question_indicator/question_indicator_widget.dart';
 import 'widgets/quiz/quiz_widget.dart';
 
