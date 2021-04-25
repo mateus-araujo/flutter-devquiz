@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'package:devquiz/src/app/shared/styles/text_styles.dart';
 import 'package:devquiz/src/app/shared/utils/app_images.dart';
@@ -61,8 +62,8 @@ class ResultView extends StatelessWidget {
                       Expanded(
                         child: NextButtonWidget.purple(
                           label: 'Compartilhar',
-                          onTap: () => Navigator.pop(
-                            context,
+                          onTap: () => Share.share(
+                            'DevQuiz NLW 5 - Flutter: Resultado do Quiz: ${quiz.title} \nObtive: ${qtdAnswersRight / quiz.questions.length}% de aproveitamento',
                           ),
                         ),
                       )
