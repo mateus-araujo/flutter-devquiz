@@ -1,10 +1,10 @@
-import 'package:devquiz/src/bindings.dart';
 import 'package:flutter/material.dart';
 
-import 'package:devquiz/src/app/app_widget.dart';
+import 'src/app/app.dart';
+import 'src/app/navigation/bindings.dart';
 
 void main() async {
   await setup();
 
-  runApp(AppWidget());
+  runApp(App());
 }
