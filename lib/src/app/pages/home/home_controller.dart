@@ -16,8 +16,8 @@ enum HomeState {
 class HomeController {
   final stateNotifier = ValueNotifier<HomeState>(HomeState.empty);
 
-  set state(HomeState state) => stateNotifier.value = state;
   HomeState get state => stateNotifier.value;
+  set state(HomeState state) => stateNotifier.value = state;
 
   UserModel? user;
   List<QuizModel>? quizzes;

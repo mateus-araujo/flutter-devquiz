@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:devquiz/src/app/pages/home/home_controller.dart';
-import 'package:devquiz/src/app/pages/home/widgets/app_bar/app_bar_widget.dart';
-import 'package:devquiz/src/app/pages/home/widgets/level_button/level_button_widget.dart';
-import 'package:devquiz/src/app/pages/home/widgets/quiz_card/quiz_card_widget.dart';
+import 'package:devquiz/src/app/navigation/routes.dart';
 import 'package:devquiz/src/app/shared/styles/colors.dart';
+
+import 'home_controller.dart';
+import 'widgets/app_bar/app_bar_widget.dart';
+import 'widgets/level_button/level_button_widget.dart';
+import 'widgets/quiz_card/quiz_card_widget.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -58,6 +60,13 @@ class _HomeViewState extends State<HomeView> {
                               image: quiz.image,
                               questionsAnswered: quiz.questionsAnswered,
                               questionsLength: quiz.questions.length,
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  Routes.CHALLENGE,
+                                  arguments: quiz.questions,
+                                );
+                              },
                             ),
                           )
                           .toList(),

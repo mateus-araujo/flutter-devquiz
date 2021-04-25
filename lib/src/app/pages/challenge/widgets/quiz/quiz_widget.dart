@@ -1,37 +1,58 @@
 import 'package:flutter/material.dart';
 
-import 'package:devquiz/src/app/pages/challenge/widgets/answer/answer_widget.dart';
 import 'package:devquiz/src/app/shared/styles/styles.dart';
+import 'package:devquiz/src/domain/entities/answer_model.dart';
+import 'package:devquiz/src/domain/entities/question_model.dart';
 
-class QuizWidget extends StatelessWidget {
-  final String title;
+import '../../controllers/quiz_controller.dart';
+import '../answer/answer_widget.dart';
 
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+class QuizWidget extends StatefulWidget {
+  final QuestionModel question;
+  final VoidCallback onChange;
+
+  const QuizWidget({
+    Key? key,
+    required this.question,
+    required this.onChange,
+  }) : super(key: key);
+
+  @override
+  _QuizWidgetState createState() => _QuizWidgetState();
+}
+
+class _QuizWidgetState extends State<QuizWidget> {
+  final controller = QuizController();
+
+  AnswerModel getAnswerByIndex(int index) => widget.question.answers[index];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
+          SizedBox(height: 25),
           Text(
-            title,
+            widget.question.title,
             style: AppTextStyles.heading,
           ),
           SizedBox(height: 24),
-          AnswerWidget(
-            title:
-                'Possibilita a criação de aplicativos compilados nativamente',
-          ),
-          AnswerWidget(
-            title:
-                'Possibilita a criação de aplicativos compilados nativamente',
-            isSelected: true,
-            isRight: true,
-          ),
-          AnswerWidget(
-            title:
-                'Possibilita a criação de aplicativos compilados nativamente',
-            isSelected: true,
+          Expanded(
+            child: ValueListenableBuilder<int>(
+              valueListenable: controller.selectedIndexNotifier,
+              builder: (context, value, child) => ListView.builder(
+                itemCount: widget.question.answers.length,
+                itemBuilder: (context, index) => AnswerWidget(
+                  answer: getAnswerByIndex(index),
+                  isSelected: value == index,
+                  disabled: value != -1,
+                  onTap: () {
+                    controller.selectedIndex = index;
+                    widget.onChange();
+                  },
+                ),
+              ),
+            ),
           ),
         ],
       ),
