@@ -9,12 +9,12 @@ import '../answer/answer_widget.dart';
 
 class QuizWidget extends StatefulWidget {
   final QuestionModel question;
-  final VoidCallback onChange;
+  final ValueChanged<bool> onSelected;
 
   const QuizWidget({
     Key? key,
     required this.question,
-    required this.onChange,
+    required this.onSelected,
   }) : super(key: key);
 
   @override
@@ -46,9 +46,9 @@ class _QuizWidgetState extends State<QuizWidget> {
                   answer: getAnswerByIndex(index),
                   isSelected: value == index,
                   disabled: value != -1,
-                  onTap: () {
+                  onTap: (value) {
                     controller.selectedIndex = index;
-                    widget.onChange();
+                    widget.onSelected(value);
                   },
                 ),
               ),

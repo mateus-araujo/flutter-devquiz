@@ -64,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
                                 Navigator.pushNamed(
                                   context,
                                   Routes.CHALLENGE,
-                                  arguments: quiz.questions,
+                                  arguments: quiz,
                                 );
                               },
                             ),

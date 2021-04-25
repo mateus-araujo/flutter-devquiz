@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:devquiz/src/domain/entities/question_model.dart';
+import 'package:devquiz/src/app/pages/result/result_view.dart';
+import 'package:devquiz/src/domain/entities/quiz_model.dart';
 
+import '../../navigation/routes.dart';
 import 'controllers/challenge_controller.dart';
 import 'widgets/next_button/next_button_widget.dart';
 import 'widgets/question_indicator/question_indicator_widget.dart';
 import 'widgets/quiz/quiz_widget.dart';
 
 class ChallengeView extends StatefulWidget {
-  final List<QuestionModel> questions;
+  final QuizModel quiz;
 
-  const ChallengeView({Key? key, required this.questions}) : super(key: key);
+  const ChallengeView({Key? key, required this.quiz}) : super(key: key);
 
   @override
   _ChallengeViewState createState() => _ChallengeViewState();
@@ -21,7 +23,7 @@ class _ChallengeViewState extends State<ChallengeView> {
   final pageController = PageController();
 
   void nextPage() async {
-    if (controller.currentPage == widget.questions.length - 1) return;
+    if (controller.currentPage == widget.quiz.questions.length - 1) return;
 
     await Future.delayed(Duration(seconds: 1));
 
@@ -29,6 +31,13 @@ class _ChallengeViewState extends State<ChallengeView> {
       duration: Duration(milliseconds: 500),
       curve: Curves.linear,
     );
+  }
+
+  void onSelected(bool value) {
+    if (!value) return;
+
+    controller.qtdAnswersRight++;
+    nextPage();
   }
 
   @override
@@ -50,7 +59,7 @@ class _ChallengeViewState extends State<ChallengeView> {
                 builder: (context, value, child) {
                   return QuestionIndicatorWidget(
                     currentPage: value,
-                    questionsLength: widget.questions.length,
+                    questionsLength: widget.quiz.questions.length,
                   );
                 },
               )
@@ -62,11 +71,13 @@ class _ChallengeViewState extends State<ChallengeView> {
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: (value) => controller.currentPage = value,
-        children: widget.questions
-            .map((question) => QuizWidget(
-                  question: question,
-                  onChange: nextPage,
-                ))
+        children: widget.quiz.questions
+            .map(
+              (question) => QuizWidget(
+                question: question,
+                onSelected: onSelected,
+              ),
+            )
             .toList(),
       ),
       bottomNavigationBar: SafeArea(
@@ -76,8 +87,18 @@ class _ChallengeViewState extends State<ChallengeView> {
           child: ValueListenableBuilder(
             valueListenable: controller.currentPageNotifier,
             builder: (context, value, _) {
-              if (value == widget.questions.length - 1)
-                return NextButtonWidget.green(label: "Confirmar", onTap: () {});
+              if (value == widget.quiz.questions.length - 1)
+                return NextButtonWidget.green(
+                  label: "Confirmar",
+                  onTap: () => Navigator.pushReplacementNamed(
+                    context,
+                    Routes.RESULT,
+                    arguments: ResultArguments(
+                      quiz: widget.quiz,
+                      qtdAnswersRight: controller.qtdAnswersRight,
+                    ),
+                  ),
+                );
               else
                 return NextButtonWidget.white(
                   label: "Pular",
